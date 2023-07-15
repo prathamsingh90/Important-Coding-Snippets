@@ -62,6 +62,14 @@ func (stk *Stack) Peek() (interface{}, error) {
 	return temp, nil
 }
 
+func (stk *Stack) Size() int {
+	return stk.top + 1
+}
+
+func (stk *Stack) Drain() {
+	stk.data = nil
+	stk.top = -1
+}
 func main() {
 	stk := NewStack(10)
 	for i := 1; i <= 5; i++ {
@@ -75,4 +83,9 @@ func main() {
 		return
 	}
 	fmt.Printf("Current element at top is: %v", temp)
+	fmt.Println()
+	fmt.Printf("Current Size of stack is: %v", stk.Size())
+	stk.Drain()
+	fmt.Println()
+	fmt.Print(stk)
 }
